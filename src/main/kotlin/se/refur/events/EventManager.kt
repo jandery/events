@@ -12,8 +12,8 @@ class EventManager<T : IEvent> {
     }
 
     fun notify(event: T, vararg args: Any) {
-        println("args size in notify ${args.size}")
-        listeners[event]?.asSequence()
+        listeners[event]
+            ?.asSequence()
             ?.forEach { it.handle(*args) }
     }
 }

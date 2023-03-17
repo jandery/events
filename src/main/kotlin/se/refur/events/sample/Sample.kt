@@ -9,22 +9,20 @@ import se.refur.events.IEventHandler
  */
 enum class DecisionEventsEnum : IEvent {
     APPROVED,
-    REJECTED,
-    REVERTED
+    REJECTED
 }
 
+// Manager for handling events for Decisions
 val decisionManager = EventManager<DecisionEventsEnum>()
 
 fun main() {
     decisionManager.register(DecisionEventsEnum.APPROVED, object : IEventHandler {
         override fun handle(vararg args: Any) {
-            println("args size in handle ${args.size}")
-            println("Handle approved event ${args[0]}, ${args[1]}")
+            println("Handle approved event, args size ${args.size}")
         }
     })
     decisionManager.register(DecisionEventsEnum.APPROVED, object : IEventHandler {
         override fun handle(vararg args: Any) {
-            println("args size in handle ${args.size}")
             println("Log approved event")
         }
     })
