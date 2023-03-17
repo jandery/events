@@ -1,5 +1,5 @@
 package se.refur.events
 
-interface IEventHandler {
+fun interface IEventHandler {
     fun handle(vararg args: Any)
 }

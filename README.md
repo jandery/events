@@ -50,10 +50,18 @@ val stateChangeManager = EventManager<StateChangeEventsEnum>()
 ```
 
 ##### Registering events
+Register events can be made in two ways, either by function or by object/class instance
 
 ```kotlin
 package se.refur.examples
 
+decisionManager.register(DecisionEventsEnum.APPROVED) { args ->
+    println("args size in handle ${args.size}")
+}
+stateChangeManager.register(StateChangeEventsEnum.FIRST_STATE) { args ->
+    println("args size in handle ${args.size}")
+}
+// OR
 decisionManager.register(DecisionEventsEnum.APPROVED, object : IEventHandler {
     override fun handle(vararg args: Any) {
         println("args size in handle ${args.size}")
@@ -67,11 +75,12 @@ stateChangeManager.register(StateChangeEventsEnum.FIRST_STATE, object : IEventHa
 ```
 
 ##### Firing events
+Firing events can be made without, with single or with multiple arguments
 
 ```kotlin
 package se.refur.examples
-// with arguments
-decisionManager.notify(DecisionEventsEnum.APPROVED, "GUID1", 42)
 // without arguments
 stateChangeManager.notify(StateChangeEventsEnum.FIRST_STATE)
+// with arguments
+decisionManager.notify(DecisionEventsEnum.APPROVED, "GUID1", 42)
 ```
