@@ -6,7 +6,7 @@
 
     <groupId>se.refur</groupId>
     <artifactId>events</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>Kotlin Event-handler</name>
     <description>Easy event handler</description>
